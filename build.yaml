@@ -3,7 +3,8 @@
 include:
   - board: nice_nano_v2
     shield: corne_left nice_view_adapter nice_view
-    snippet: zmk-usb-logging zmk-studio
+    snippet: zmk-usb-logging studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
     artifact-name: corne_left_debug
 
   - board: nice_nano_v2
