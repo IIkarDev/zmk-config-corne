@@ -13,8 +13,8 @@ MODIFIED: 09/14/2025 21:37:26
 
 ================================================================================
 FILE: C:\Users\DukeD\OneDrive\Документы\GitHub\zmk-config-corne\build.yaml
-SIZE: 347 bytes
-MODIFIED: 09/15/2025 17:51:07
+SIZE: 367 bytes
+MODIFIED: 09/16/2025 17:27:35
 ================================================================================
 
 
@@ -23,11 +23,14 @@ MODIFIED: 09/15/2025 17:51:07
 include:
   - board: nice_nano_v2
     shield: corne_left nice_view_adapter nice_view
-    cmake-args: -DCONFIG_ZMK_USB_LOGGING=y -DCONFIG_ZMK_LOG_LEVEL_DBG=y
+    snippet: zmk-usb-logging studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
     artifact-name: corne_left_debug
+
   - board: nice_nano_v2
     shield: corne_right nice_view_adapter nice_view
     artifact-name: corne_right
+
 
 
 ================================================================================
@@ -362,55 +365,57 @@ MODIFIED: 09/14/2025 21:37:26
 
 ================================================================================
 FILE: C:\Users\DukeD\OneDrive\Документы\GitHub\zmk-config-corne\config\corne_left.conf
-SIZE: 1151 bytes
-MODIFIED: 09/15/2025 18:28:59
+SIZE: 978 bytes
+MODIFIED: 09/16/2025 17:36:35
 ================================================================================
 
 
-# ================================
-# Р›Р•Р’РђРЇ РџРћР›РћР’РРќРљРђ (CENTRAL)
-# ================================
+# === РљРѕСЂРЅРµ Р»РµРІР°СЏ РїРѕР»РѕРІРёРЅРєР° (Central) вЂ“ РєРѕРЅС„РёРі СЃ USB Р»РѕРіР°РјРё ===
 
-# Р­С‚Р° РїРѕР»РѕРІРёРЅРєР° СЏРІР»СЏРµС‚СЃСЏ РіР»Р°РІРЅРѕР№ (central)
+# РЎРїР»РёС‚ Рё СЂРѕР»Рё
 CONFIG_ZMK_SPLIT=y
 CONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
 CONFIG_ZMK_SPLIT_BLE=y
 
-# USB РЅР°СЃС‚СЂРѕР№РєРё (С‚РѕР»СЊРєРѕ Р»РµРІР°СЏ РїРѕРґРєР»СЋС‡Р°РµС‚СЃСЏ Рє РєРѕРјРїСЊСЋС‚РµСЂСѓ)
+# USB РѕСЃРЅРѕРІРЅР°СЏ С‡Р°СЃС‚СЊ
 CONFIG_ZMK_USB=y
 CONFIG_USB_DEVICE_STACK=y
 
-# Bluetooth
+# Р—Р°РґРµР№СЃС‚РІРѕРІР°С‚СЊ USB CDC ACM (РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ COM)
+CONFIG_USB_CDC_ACM=y
+CONFIG_USB_CDC_ACM_RINGBUF_SIZE=1024
+
+# Р›РѕРіРёСЂРѕРІР°РЅРёРµ
+CONFIG_ZMK_USB_LOGGING=y
+CONFIG_ZMK_LOG_LEVEL_DBG=y
+CONFIG_LOG=y
+
+# РљРѕРЅСЃРѕР»СЊ / UART
+CONFIG_SERIAL=y
+CONFIG_CONSOLE=y
+CONFIG_UART_CONSOLE=y
+CONFIG_UART_LINE_CTRL=y
+CONFIG_USB_DEVICE_INITIALIZE_AT_BOOT=y
+
+# Bluetooth (РµСЃР»Рё РЅСѓР¶РµРЅ)
 CONFIG_BT=y
 CONFIG_ZMK_BLE=y
 CONFIG_BT_MAX_CONN=2
 CONFIG_BT_MAX_PAIRED=2
-
-# РЈРІРµР»РёС‡РёРІР°РµРј РјРѕС‰РЅРѕСЃС‚СЊ РїРµСЂРµРґР°С‚С‡РёРєР° РґР»СЏ Р»СѓС‡С€РµР№ СЃРІСЏР·Рё
 CONFIG_BT_CTLR_TX_PWR_PLUS_8=y
 
-# Display (РµСЃР»Рё Сѓ РІР°СЃ nice!view)
+# РџРѕРґСЃРІРµС‚РєР° Рё РґРёСЃРїР»РµР№ (РµСЃР»Рё Сѓ С‚РµР±СЏ РµСЃС‚СЊ)
 CONFIG_ZMK_DISPLAY=y
-CONFIG_LVGL_THEME_DEFAULT_FONT_SMALL_MONTSERRAT_26=y
-CONFIG_LVGL_THEME_DEFAULT_FONT_NORMAL_MONTSERRAT_26=y
-CONFIG_ZMK_WIDGET_BATTERY_STATUS_SHOW_PERCENTAGE=y
 
-# RGB РїРѕРґСЃРІРµС‚РєР° (РµСЃР»Рё РµСЃС‚СЊ)
-CONFIG_ZMK_RGB_UNDERGLOW=y
-CONFIG_WS2812_STRIP=y
-
-# Р›РѕРіРёСЂРѕРІР°РЅРёРµ РґР»СЏ РѕС‚Р»Р°РґРєРё (РІРєР»СЋС‡РёС‚СЊ РїСЂРё РїСЂРѕР±Р»РµРјР°С…)
-CONFIG_ZMK_USB_LOGGING=y
-CONFIG_ZMK_LOG_LEVEL_DBG=y
-CONFIG_SERIAL=y
-CONFIG_UART_CONSOLE=y
+# РџСЂРѕС‡РёРµ РЅСѓР¶РЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё
+CONFIG_ZMK_STUDIO=y
 
 
 
 ================================================================================
 FILE: C:\Users\DukeD\OneDrive\Документы\GitHub\zmk-config-corne\config\corne_right.conf
-SIZE: 711 bytes
-MODIFIED: 09/15/2025 17:49:05
+SIZE: 708 bytes
+MODIFIED: 09/15/2025 19:00:41
 ================================================================================
 
 
@@ -420,7 +425,7 @@ MODIFIED: 09/15/2025 17:49:05
 
 # Р­С‚Р° РїРѕР»РѕРІРёРЅРєР° СЏРІР»СЏРµС‚СЃСЏ РІРµРґРѕРјРѕР№ (peripheral)
 CONFIG_ZMK_SPLIT=y
-CONFIG_ZMK_SPLIT_ROLE_PERIPHERAL=y
+CONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
 CONFIG_ZMK_SPLIT_BLE=y
 
 # Bluetooth
