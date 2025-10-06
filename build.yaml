@@ -9,7 +9,8 @@ include:
 
   - board: nice_nano_v2
     shield: corne_right nice_view_adapter nice_view
-    artifact-name: corne_right
+    snippet: zmk-usb-logging studio-rpc-usb-uart
+    artifact-name: corne_right_debug
 
   - board: nice_nano_v2
     shield: settings_reset
